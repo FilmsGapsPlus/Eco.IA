@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="es">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Eco IA</title>
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=SUSE:wght@100..800&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <style>
+         :root {
+         --background-light: #f6f9ff;
+         --background-dark: #1f2024;
+         --text-light: #333;
+         --text-dark: #fff;
+         --message-light: #e1eaf3;
+         --message-dark: #252c32;
+         --border-light: #e0e0e0;
+         --border-dark: #333;
+         --user-message-light: #d1ecf1;
+         --user-message-dark: #0d6efd;
+         }
+         .icon {
+         font-size: 20px;
+         color: solid var(--border-light);
+         }
+         .icon2 {
+         font-size: 15px;
+         color: var(--text-light);
+         }
+         body {
+         font-family: Arial, sans-serif;
+         margin: 0;
+         padding: 0;
+         background-color: var(--background-light);
+         color: var(--text-light);
+         transition: background-color 0.3s, color 0.3s;
+         }
+         .container {
+         max-width: auto;
+         margin: 0 auto;
+         height: 100%;
+         display: flex;
+         flex-direction: column;
+         }
+         header {
+         display: flex;
+         align-items: center;
+         padding: 10px;
+         border-bottom: 1px solid var(--border-light);
+         }
+         .logo {
+         border-radius: 10px;
+         width: 40px;
+         height: 40px;
+         margin-right: 10px;
+         }
+         header h1 {
+         margin: 0;
+         font-size: 1.2em;
+         }
+         header p {
+         margin: 0;
+         font-size: 0.8em;
+         color: #666;
+         }
+         main {
+         flex-grow: 1;
+         overflow-y: auto;
+         padding: 10px;
+         }
+         .message {
+         margin: 8px 0;
+         padding: 10px;
+         border-radius: 8px;
+         max-width: 90%;
+         word-wrap: break-word;
+         }
+         .user-message {
+         background-color: var(--message-light);
+         color: var(--text-light);
+         text-align: right;
+         margin-left: auto;
+         }
+         .ai-message {
+         background-color: rgba(0, 0, 0, 0.0);
+         color: var(--text-light);
+         border: 1px solid rgba(0, 0, 0, 0.0);
+         }
+         .code-block {
+         position: relative;
+         background-color: #282c34;
+         color: #fff;
+         border-radius: 6px;
+         padding: 12px;
+         margin: 8px 0;
+         overflow-x: auto;
+         }
+         .code-title {
+         font-size: 0.9em;
+         font-weight: bold;
+         color: #aaa;
+         margin-bottom: 8px;
+         }
+         .copy-button {
+         justify-content: center;
+         position: absolute;
+         top: 10px;
+         right: 10px;
+         background-color: var(--background-light);
+         border: 1px solid var(--border-light);
+         color: var(--text-light);
+         border: none;
+         border-radius: 8px;
+         padding: 6px 10px;
+         font-size: 0.8em;
+         cursor: pointer;
+         transition: background-color 0.2s ease;
+         }
+         .copy-button:hover {
+         background-color: var(--message-light);
+         border: 1px solid var(--border-light);
+         }
+         pre {
+         margin: 0;
+         overflow-x: auto;
+         }
+         code {
+         font-family: "Courier New", monospace;
+         font-size: 0.9em;
+         color: #8a8a8a;
+         }
+         #chatMessages {
+         overflow-y: auto;
+         max-height: 100%;
+         padding: 10px;
+         display: flex;
+         flex-direction: column;
+         }
+         .highlight {
+         color: #128C7E;
+         font-weight: bold;
+         }
+         footer {
+         border-top: 1px solid var(--border-light);
+         padding: 15px;
+         }
+         #chatForm {
+         display: flex;
+         }
+         #userInput {
+         flex-grow: 1;
+         padding: 13px;
+         background-color: var(--background-light);
+         border: 1px solid var(--border-light);
+         color: var(--text-light);
+         border-radius: 10px;
+         margin-right: 10px;
+         width: 40px;
+         height: 40px;
+         }
+         #chatForm button {
+         background-color: var(--message-light);
+         color: var(--text-light);
+         border: none;
+         border-radius: 10px;
+         width: 40px;
+         height: 40px;
+         font-size: 1.2em;
+         cursor: pointer;
+         }
+         .theme-toggle {
+         margin-left: auto;
+         padding: 10px;
+         cursor: pointer;
+         font-size: 1em;
+         background-color: transparent;
+         border: none;
+         color: var(--text-light);
+         transition: color 0.3s;
+         }
+      </style>
+   </head>
+   <body>
+      <div class="container">
+         <header>
+            <img src="https://i.ibb.co/Wpbc5ww/icon.png" alt="Eco IA Logo" class="logo">
+            <div>
+               <h1>Eco IA</h1>
+               <p>Inteligencia artificial</p>
+            </div>
+            <button class="theme-toggle" id="themeToggle"><i class="material-icons icon">dark_mode</i></button>
+         </header>
+         <main>
+            <div id="chatMessages"></div>
+         </main>
+         <footer>
+            <form id="chatForm">
+               <input type="text" id="userInput" placeholder="Conversa con Eco IA">
+               <button type="submit"><i class="material-icons icon">send</i></button>
+            </form>
+         </footer>
+      </div>
+      <script>
+         document.addEventListener("DOMContentLoaded", function () {
+             const chatForm = document.getElementById("chatForm");
+             const userInput = document.getElementById("userInput");
+             const chatMessages = document.getElementById("chatMessages");
+             const sendButton = chatForm.querySelector("button");
+         
+             const apiUrl = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=AIzaSyANejja1SBYbuNlTqtUHVKm-cpFwqT-e_c";
+         
+             let conversation = [];
+             let isFirstMessage = true;
+         
+             function showLoading() {
+                 const loadingMessage = document.createElement("div");
+                 loadingMessage.classList.add("message", "loading");
+                 loadingMessage.textContent = "Cargando...";
+                 chatMessages.appendChild(loadingMessage);
+                 scrollToBottom();
+                 sendButton.disabled = true;
+                 sendButton.style.visibility = "hidden";
+             }
+         
+             function removeLoading() {
+                 const loadingMessage = document.querySelector(".loading");
+                 if (loadingMessage) {
+                     loadingMessage.remove();
+                 }
+                 sendButton.disabled = false;
+                 sendButton.style.visibility = "visible";
+             }
+         
+             async function sendMessage(message) {
+                 let body;
+         
+                 if (isFirstMessage) {
+                     body = JSON.stringify({
+                         contents: {
+                             role: "user",
+                             parts: [{ text: message }]
+                         }
+                     });
+                     isFirstMessage = false;
+                 } else {
+                     conversation.push({ role: "user", parts: [{ text: message }] });
+                     body = JSON.stringify({ contents: conversation });
+                 }
+         
+                 showLoading();
+         
+                 try {
+                     const response = await fetch(apiUrl, {
+                         method: "POST",
+                         headers: { "Content-Type": "application/json" },
+                         body: body
+                     });
+         
+                     if (!response.ok) {
+                         throw new Error(`Error: ${response.statusText}`);
+                     }
+         
+                     const data = await response.json();
+                     const textResponse = data.candidates[0]?.content.parts[0]?.text || "Sin respuesta.";
+         
+                     conversation.push({ role: "model", parts: [{ text: textResponse }] });
+         
+                     removeLoading();
+                     addMessage("ai-message", textResponse);
+                 } catch (error) {
+                     console.error("Error al comunicarse con la API:", error);
+                     removeLoading();
+                     addMessage("ai-message", "Hubo un error al procesar tu solicitud.");
+                 }
+             }
+         
+             function addMessage(type, text) {
+                 const messageElement = document.createElement("div");
+                 messageElement.classList.add("message", type);
+                 messageElement.innerHTML = formatText(text);
+                 chatMessages.appendChild(messageElement);
+         
+                 // Desplazar al final del contenedor
+                 scrollToBottom();
+             }
+         
+             function formatText(text) {
+                 text = text.replace(/```(\w+)?([\s\S]*?)```/g, function (_, title, code) {
+                     const codeTitle = title ? `<div class="code-title">${title.charAt(0).toUpperCase() + title.slice(1)}</div>` : "";
+                     const escapedCode = escapeHTML(code);
+                     return `<div class="code-block">
+                                 ${codeTitle}
+                                 <pre><code>${escapedCode}</code></pre>
+                                 <button class="copy-button" onclick="copyCode(this)"><i class="material-icons icon2">content_paste</i></button>
+                             </div>`;
+                 });
+         
+                 text = text.replace(/`([^`]+)`/g, "<code>$1</code>");
+                 text = text.replace(/\*\*([^\*]+)\*\*/g, "<strong>$1</strong>");
+                 text = text.replace(/\*([^\*]+)\*/g, "<em>$1</em>");
+                 text = text.replace(/###([^\n]+)/g, "<h3>$1</h3>");
+         
+                 return text;
+             }
+         
+             function escapeHTML(text) {
+                 return text.replace(/&/g, "&amp;")
+                     .replace(/</g, "&lt;")
+                     .replace(/>/g, "&gt;")
+                     .replace(/"/g, "&quot;")
+                     .replace(/'/g, "&#039;");
+             }
+         
+             function copyCode(button) {
+                 const code = button.previousElementSibling.textContent;
+         
+                 navigator.clipboard.writeText(code).then(() => {
+                     button.textContent = "�Copiado!";
+                     setTimeout(() => (button.textContent = "Copiar cadigo"), 2000);
+                 }).catch(err => {
+                     console.error("Error al copiar el codigo:", err);
+                 });
+             }
+         
+             function scrollToBottom() {
+                 chatMessages.scrollTop = chatMessages.scrollHeight;
+             }
+         
+             chatForm.addEventListener("submit", function (e) {
+                 e.preventDefault();
+                 const userMessage = userInput.value.trim();
+                 if (userMessage) {
+                     addMessage("user-message", userMessage);
+                     sendMessage(userMessage);
+                     userInput.value = "";
+                 }
+             });
+         });
+                 document.getElementById("themeToggle").addEventListener("click", function () {
+         const isDark = document.body.classList.toggle("dark-theme");
+         const icon = this.querySelector("i");
+         
+         if (isDark) {
+             document.documentElement.style.setProperty("--background-light", "#1f2024");
+             document.documentElement.style.setProperty("--text-light", "#fff");
+             document.documentElement.style.setProperty("--message-light", "#252c32");
+             document.documentElement.style.setProperty("--border-light", "#333");
+             document.documentElement.style.setProperty("--user-message-light", "#252c32");
+             icon.textContent = "light_mode"; // Cambia el icono a "light_mode"
+             localStorage.setItem("theme", "dark"); // Guarda el tema oscuro
+         } else {
+             document.documentElement.style.setProperty("--background-light", "#f6f9ff");
+             document.documentElement.style.setProperty("--text-light", "#333");
+             document.documentElement.style.setProperty("--message-light", "#e1eaf3");
+             document.documentElement.style.setProperty("--border-light", "#e0e0e0");
+             document.documentElement.style.setProperty("--user-message-light", "#d1ecf1");
+             icon.textContent = "dark_mode"; // Cambia el icono a "dark_mode"
+             localStorage.setItem("theme", "light"); // Guarda el tema claro
+         }
+         });
+         
+         // Al cargar la página, verifica el tema guardado en localStorage
+         window.addEventListener("load", function () {
+         const savedTheme = localStorage.getItem("theme");
+         
+         if (savedTheme === "dark") {
+             document.body.classList.add("dark-theme");
+             const icon = document.getElementById("themeToggle").querySelector("i");
+             icon.textContent = "light_mode"; // Cambia el icono a "light_mode"
+             document.documentElement.style.setProperty("--background-light", "#1f2024");
+             document.documentElement.style.setProperty("--text-light", "#fff");
+             document.documentElement.style.setProperty("--message-light", "#252c32");
+             document.documentElement.style.setProperty("--border-light", "#333");
+             document.documentElement.style.setProperty("--user-message-light", "#252c32");
+         }
+         });
+      </script>
+   </body>
+  </html>
