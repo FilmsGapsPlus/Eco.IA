@@ -42,12 +42,13 @@
          margin: 0 auto;
          height: 100%;
          display: flex;
+         max-height: 100%;
          flex-direction: column;
          }
          header {
          display: flex;
          align-items: center;
-         height: auto;
+         max-height: 100%;
          padding: 15px;
          border-bottom: 1px solid var(--border-light);
          }
@@ -194,13 +195,12 @@
             <button class="theme-toggle" id="themeToggle"><i class="material-icons icon">dark_mode</i></button>
          </header>
             <div id="chatMessages"></div>
-         <footer>
+               <footer>
             <form id="chatForm">
                <input type="text" id="userInput" placeholder="Conversa con Eco IA">
                <button type="submit"><i class="material-icons icon">send</i></button>
             </form>
          </footer>
-      </div>
       <script>
          document.addEventListener("DOMContentLoaded", function () {
              const chatForm = document.getElementById("chatForm");
