@@ -1,36 +1,36 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eco IA • Artificial intelligence</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-            height: 100%;
-            background-color: var(--background-light);
-            color: var(--text-light);
-            transition: background-color 0.3s, color 0.3s;
-        }
-        :root {
-            --background-light: #f6f9ff;
-            --background-dark: #1f2024;
-            --text-light: #333;
-            --text-dark: #fff;
-            --message-light: #e1eaf3;
-            --message-dark: #252c32;
-            --border-light: #e0e0e0;
-            --border-dark: #333;
-            --user-message-light: #d1ecf1;
-            --user-message-dark: #0d6efd;
-        }
-        .icon {
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Eco IA • Artificial intelligence</title>
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <style>
+         body, html {
+         margin: 0;
+         padding: 0;
+         font-family: Arial, sans-serif;
+         height: 100%;
+         background-color: var(--background-light);
+         color: var(--text-light);
+         transition: background-color 0.3s, color 0.3s;
+         }
+         :root {
+         --background-light: #f6f9ff;
+         --background-dark: #1f2024;
+         --text-light: #333;
+         --text-dark: #fff;
+         --message-light: #e1eaf3;
+         --message-dark: #252c32;
+         --border-light: #e0e0e0;
+         --border-dark: #333;
+         --user-message-light: #d1ecf1;
+         --user-message-dark: #0d6efd;
+         }
+         .icon {
          font-size: 20px;
          color: solid var(--border-light);
          }
@@ -38,53 +38,53 @@
          font-size: 15px;
          color: var(--text-light);
          }
-        .container {
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-        }
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 8px;
-            background-color: var(--background-light);
-            border-bottom: 1px solid var(--border-light);
-        }
-        .logo {
-        	border-radius: 10px;
-            display: flex;
-            align-items: center;
-        }
-        .logo img {
-            width: 43px;
-            height: 43px;
-            margin: 10px;
-            border-radius: 10px;
-        }
-        header h1 {
-            margin: 0;
-            font-size: 1.2em;
-        }
-        header p {
-            margin: 0;
-            font-size: 0.8em;
-            color: #666;
-        }
-        .dark-mode-toggle {
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-size: 20px;
-        }
-        .chat-area {
-            flex-grow: 1;
-            overflow-y: auto;
-            padding: 10px;
-        }
-   .message {
-         margin: 8px 0;
+         .container {
+         display: flex;
+         flex-direction: column;
+         height: 100%;
+         }
+         header {
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         padding: 8px;
+         background-color: var(--background-light);
+         border-bottom: 1px solid var(--border-light);
+         }
+         .logo {
+         border-radius: 10px;
+         display: flex;
+         align-items: center;
+         }
+         .logo img {
+         width: 43px;
+         height: 43px;
+         margin: 10px;
+         border-radius: 10px;
+         }
+         header h1 {
+         margin: 0;
+         font-size: 1.2em;
+         }
+         header p {
+         margin: 0;
+         font-size: 0.8em;
+         color: #666;
+         }
+         .dark-mode-toggle {
+         background: none;
+         border: none;
+         cursor: pointer;
+         font-size: 20px;
+         }
+         .chat-area {
+         flex-grow: 1;
+         overflow-y: auto;
          padding: 10px;
+         }
+         .message {
+         margin: 8px 0;
+         padding: 13px;
          border-radius: 8px;
          max-width: 90%;
          word-wrap: break-word;
@@ -156,8 +156,8 @@
          font-weight: bold;
          }
          footer {
-         border-top: 1px solid var(--border-light);
-         padding: 15px;
+         border-top: 0px solid var(--border-light);
+         padding: 5px 18px 15px 18px;
          height: auto;
          display: flex;
          align-items: center;
@@ -165,19 +165,19 @@
          #chatForm {
          display: flex;
          width: 100%;
-         height: 50px;
+         height: 25px;
          }
          #userInput {
-    flex-grow: 1; /* Evita que el input crezca automáticamente */
-    padding: 10px; /* Ajusta el espacio interno */
-    background-color: var(--background-light);
-    border: 1px solid var(--border-light);
-    color: var(--text-light);
-    border-radius: 10px;
-    margin-right: 10px;
-    height: 50px; /* Define la altura específica */
-    box-sizing: border-box; /* Asegura que padding y border no afecten las dimensiones */
-}
+         flex-grow: 1; /* Evita que el input crezca automáticamente */
+         padding: 15px; /* Ajusta el espacio interno */
+         background-color: var(--background-light);
+         border: 1px solid var(--border-light);
+         color: var(--text-light);
+         border-radius: 10px;
+         margin-right: 10px;
+         height: 50px; /* Define la altura específica */
+         box-sizing: border-box; /* Asegura que padding y border no afecten las dimensiones */
+         }
          #chatForm button {
          background-color: var(--message-light);
          color: var(--text-light);
@@ -187,6 +187,26 @@
          height: 48px;
          font-size: 1.2em;
          cursor: pointer;
+         display: flex; /* Habilita un contenedor flex */
+         align-items: center; /* Centra verticalmente */
+         justify-content: center; /* Centra horizontalmente */
+         }
+         button .spinner {
+         width: 20px;
+         height: 20px;
+         border: 3px solid var(--message-light);
+         border-top: 3px solid var(--text-light);
+         border-radius: 50%;
+         animation: spin 1s linear infinite;
+         margin: auto;
+         }
+         @keyframes spin {
+         0% {
+         transform: rotate(0deg);
+         }
+         100% {
+         transform: rotate(360deg);
+         }
          }
          .theme-toggle {
          margin-left: auto;
@@ -198,33 +218,40 @@
          color: var(--text-light);
          transition: color 0.3s;
          }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <header>
+      </style>
+   </head>
+   <body>
+      <div class="container">
+         <header>
             <div class="logo">
-                <img src="https://i.ibb.co/Wpbc5ww/icon.png" alt="Eco IA Logo">
-                <div>
-                    <h1>Eco IA</h1>
-                    <p>Inteligencia artificial</p>
-                </div>
+               <img src="https://i.ibb.co/Wpbc5ww/icon.png" alt="Eco IA Logo">
+               <div>
+                  <h1>Eco IA</h1>
+                  <p>Inteligencia artificial</p>
+               </div>
             </div>
             <button class="theme-toggle" id="themeToggle">
-                <i class="material-icons">dark_mode</i>
+            <i class="material-icons">dark_mode</i>
             </button>
-        </header>
-        <div class="chat-area" id="chatMessages">
+         </header>
+         <div class="chat-area" id="chatMessages">
             <!-- Mensajes del chat se cargarán aquí -->
-        </div>
-        <footer>
+         </div>
+         <footer>
             <form class="input-area" id="chatForm">
-                <input type="text" id="userInput" placeholder="Conversa con Eco IA">
-                <button type="submit"><i class="material-icons">send</i></button>
+               <input type="text" id="userInput" placeholder="Conversa con Eco IA">
+               <button id="sendButton" type="submit">
+               <i class="material-icons">send</i>
+               </button>
             </form>
-        </footer>
-    </div>
-    <script>
+         </footer>
+         <header>
+            <center>
+               <p>Eco IA puede cometer errores, asi aue verifica las respuestas.</p>
+            </center>
+         </header>
+      </div>
+      <script>
          document.addEventListener("DOMContentLoaded", function () {
              const chatForm = document.getElementById("chatForm");
              const userInput = document.getElementById("userInput");
@@ -237,22 +264,34 @@
              let isFirstMessage = true;
          
              function showLoading() {
-                 const loadingMessage = document.createElement("div");
-                 loadingMessage.classList.add("message", "loading");
-                 loadingMessage.textContent = "Cargando...";
-                 chatMessages.appendChild(loadingMessage);
-                 scrollToBottom();
-                 sendButton.disabled = true;
-                 sendButton.style.visibility = "hidden";
+                 // Guarda el contenido original del botón
+                 const icon = sendButton.querySelector("i");
+                 if (icon) {
+                     icon.style.display = "none"; // Oculta el ícono
+                 }
+         
+                 // Añade un spinner dentro del botón
+                 const spinner = document.createElement("div");
+                 spinner.classList.add("spinner");
+                 sendButton.appendChild(spinner);
+         
+                 sendButton.disabled = true; // Desactiva el botón
              }
          
              function removeLoading() {
-                 const loadingMessage = document.querySelector(".loading");
-                 if (loadingMessage) {
-                     loadingMessage.remove();
+                 // Elimina el spinner
+                 const spinner = sendButton.querySelector(".spinner");
+                 if (spinner) {
+                     spinner.remove();
                  }
-                 sendButton.disabled = false;
-                 sendButton.style.visibility = "visible";
+         
+                 // Muestra el ícono original
+                 const icon = sendButton.querySelector("i");
+                 if (icon) {
+                     icon.style.display = "block";
+                 }
+         
+                 sendButton.disabled = false; // Reactiva el botón
              }
          
              async function sendMessage(message) {
@@ -339,10 +378,10 @@
                  const code = button.previousElementSibling.textContent;
          
                  navigator.clipboard.writeText(code).then(() => {
-                     button.textContent = "�Copiado!";
-                     setTimeout(() => (button.textContent = "Copiar cadigo"), 2000);
+                     button.textContent = "¡Copiado!";
+                     setTimeout(() => (button.textContent = "Copiar código"), 2000);
                  }).catch(err => {
-                     console.error("Error al copiar el codigo:", err);
+                     console.error("Error al copiar el código:", err);
                  });
              }
          
@@ -360,44 +399,44 @@
                  }
              });
          });
-                 document.getElementById("themeToggle").addEventListener("click", function () {
-         const isDark = document.body.classList.toggle("dark-theme");
-         const icon = this.querySelector("i");
-         
-         if (isDark) {
-             document.documentElement.style.setProperty("--background-light", "#1f2024");
-             document.documentElement.style.setProperty("--text-light", "#fff");
-             document.documentElement.style.setProperty("--message-light", "#252c32");
-             document.documentElement.style.setProperty("--border-light", "#333");
-             document.documentElement.style.setProperty("--user-message-light", "#252c32");
-             icon.textContent = "light_mode"; // Cambia el icono a "light_mode"
-             localStorage.setItem("theme", "dark"); // Guarda el tema oscuro
-         } else {
-             document.documentElement.style.setProperty("--background-light", "#f6f9ff");
-             document.documentElement.style.setProperty("--text-light", "#333");
-             document.documentElement.style.setProperty("--message-light", "#e1eaf3");
-             document.documentElement.style.setProperty("--border-light", "#e0e0e0");
-             document.documentElement.style.setProperty("--user-message-light", "#d1ecf1");
-             icon.textContent = "dark_mode"; // Cambia el icono a "dark_mode"
-             localStorage.setItem("theme", "light"); // Guarda el tema claro
-         }
-         });
-         
-         // Al cargar la página, verifica el tema guardado en localStorage
-         window.addEventListener("load", function () {
-         const savedTheme = localStorage.getItem("theme");
-         
-         if (savedTheme === "dark") {
-             document.body.classList.add("dark-theme");
-             const icon = document.getElementById("themeToggle").querySelector("i");
-             icon.textContent = "light_mode"; // Cambia el icono a "light_mode"
-             document.documentElement.style.setProperty("--background-light", "#1f2024");
-             document.documentElement.style.setProperty("--text-light", "#fff");
-             document.documentElement.style.setProperty("--message-light", "#252c32");
-             document.documentElement.style.setProperty("--border-light", "#333");
-             document.documentElement.style.setProperty("--user-message-light", "#252c32");
-         }
-         });
+                          document.getElementById("themeToggle").addEventListener("click", function () {
+              const isDark = document.body.classList.toggle("dark-theme");
+              const icon = this.querySelector("i");
+              
+              if (isDark) {
+                  document.documentElement.style.setProperty("--background-light", "#1f2024");
+                  document.documentElement.style.setProperty("--text-light", "#fff");
+                  document.documentElement.style.setProperty("--message-light", "#252c32");
+                  document.documentElement.style.setProperty("--border-light", "#333");
+                  document.documentElement.style.setProperty("--user-message-light", "#252c32");
+                  icon.textContent = "light_mode"; // Cambia el icono a "light_mode"
+                  localStorage.setItem("theme", "dark"); // Guarda el tema oscuro
+              } else {
+                  document.documentElement.style.setProperty("--background-light", "#f6f9ff");
+                  document.documentElement.style.setProperty("--text-light", "#333");
+                  document.documentElement.style.setProperty("--message-light", "#e1eaf3");
+                  document.documentElement.style.setProperty("--border-light", "#e0e0e0");
+                  document.documentElement.style.setProperty("--user-message-light", "#d1ecf1");
+                  icon.textContent = "dark_mode"; // Cambia el icono a "dark_mode"
+                  localStorage.setItem("theme", "light"); // Guarda el tema claro
+              }
+              });
+              
+              // Al cargar la página, verifica el tema guardado en localStorage
+              window.addEventListener("load", function () {
+              const savedTheme = localStorage.getItem("theme");
+              
+              if (savedTheme === "dark") {
+                  document.body.classList.add("dark-theme");
+                  const icon = document.getElementById("themeToggle").querySelector("i");
+                  icon.textContent = "light_mode"; // Cambia el icono a "light_mode"
+                  document.documentElement.style.setProperty("--background-light", "#1f2024");
+                  document.documentElement.style.setProperty("--text-light", "#fff");
+                  document.documentElement.style.setProperty("--message-light", "#252c32");
+                  document.documentElement.style.setProperty("--border-light", "#333");
+                  document.documentElement.style.setProperty("--user-message-light", "#252c32");
+              }
+              });
       </script>
-</body>
+   </body>
 </html>
