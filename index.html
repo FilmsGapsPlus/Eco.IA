@@ -30,6 +30,14 @@
             --user-message-light: #d1ecf1;
             --user-message-dark: #0d6efd;
         }
+        .icon {
+         font-size: 20px;
+         color: solid var(--border-light);
+         }
+         .icon2 {
+         font-size: 15px;
+         color: var(--text-light);
+         }
         .container {
             display: flex;
             flex-direction: column;
@@ -39,7 +47,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px 20px;
+            padding: 8px;
             background-color: var(--background-light);
             border-bottom: 1px solid var(--border-light);
         }
@@ -49,9 +57,9 @@
             align-items: center;
         }
         .logo img {
-            width: 40px;
-            height: 40;
-            margin-right: 10px;
+            width: 43px;
+            height: 43px;
+            margin: 10px;
             border-radius: 10px;
         }
         header h1 {
@@ -160,15 +168,16 @@
          height: 50px;
          }
          #userInput {
-         flex-grow: 1;
-         padding: 13px;
-         background-color: var(--background-light);
-         border: 1px solid var(--border-light);
-         color: var(--text-light);
-         border-radius: 10px;
-         margin-right: 10px;
-         height: 50px;
-         }
+    flex-grow: 1; /* Evita que el input crezca automáticamente */
+    padding: 10px; /* Ajusta el espacio interno */
+    background-color: var(--background-light);
+    border: 1px solid var(--border-light);
+    color: var(--text-light);
+    border-radius: 10px;
+    margin-right: 10px;
+    height: 50px; /* Define la altura específica */
+    box-sizing: border-box; /* Asegura que padding y border no afecten las dimensiones */
+}
          #chatForm button {
          background-color: var(--message-light);
          color: var(--text-light);
@@ -215,7 +224,7 @@
             </form>
         </footer>
     </div>
-    <<script>
+    <script>
          document.addEventListener("DOMContentLoaded", function () {
              const chatForm = document.getElementById("chatForm");
              const userInput = document.getElementById("userInput");
